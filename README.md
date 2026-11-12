@@ -312,9 +312,9 @@ DataScience-Week2---WeIntern-Project/
 │       └── store_cleaned.csv
 │
 ├── notebooks/
-│   ├── 01_Data_Cleaning.ipynb
-│   ├── 02_Exploratory_Data_Analysis.ipynb
-│   └── 03_Sales_Prediction.ipynb
+│   ├── Task_01_Data_Cleaning.ipynb
+│   ├── Task_02_EDA.ipynb
+│   └── Task_03_Sales_Prediction.ipynb
 │
 ├── outputs/
 │   ├── charts/
