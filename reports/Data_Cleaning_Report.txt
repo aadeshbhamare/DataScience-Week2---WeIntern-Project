@@ -1,0 +1,111 @@
+
+
+ROSSMANN STORE SALES
+DATA CLEANING REPORT
+
+==================================================
+
+1. DATASET OVERVIEW
+
+          Dataset    Rows  Columns  Duplicate Rows  Missing Cells
+            Train 1017209        9               0              0
+             Test   41088        8               0             11
+            Store    1115       10               0           2343
+Sample Submission   41088        2               0              0
+
+
+2. MISSING VALUES ANALYSIS
+
+Dataset                    Column  Missing Count  Missing Percentage (%)
+   Test                      Open             11                    0.03
+  Store       CompetitionDistance              3                    0.27
+  Store CompetitionOpenSinceMonth            354                   31.75
+  Store  CompetitionOpenSinceYear            354                   31.75
+  Store           Promo2SinceWeek            544                   48.79
+  Store           Promo2SinceYear            544                   48.79
+  Store             PromoInterval            544                   48.79
+
+
+3. DUPLICATE ANALYSIS
+
+Train: 0
+Test: 0
+Store: 0
+
+
+4. MISSING VALUE HANDLING
+
+- CompetitionDistance: Median imputation.
+- Missingness indicator created.
+- Promo2 missing values handled as structurally not applicable.
+- Competition opening information handled using indicators.
+- Missing Test Open values inferred using Store and DayOfWeek history.
+
+
+5. OUTLIER ANALYSIS
+
+   Column      Q1      Q3     IQR  Lower Bound  Upper Bound  Outlier Count  Outlier Percentage
+    sales 4859.00 8360.00 3501.00      -392.50     13611.50          30769                3.64
+customers  519.00  893.00  374.00       -42.00      1454.00          40853                4.84
+
+Outliers were detected using the IQR method.
+
+Genuine business outliers were retained.
+No automatic deletion or capping was performed.
+
+
+6. BEFORE AND AFTER COMPARISON
+
+Dataset  Rows Before  Rows After  Columns Before  Columns After  Missing Before  Missing After  Exact Duplicates Before  Exact Duplicates After
+  Train      1017209     1017209               9              9               0              0                        0                       0
+   Test        41088       41088               8              8              11              0                        0                       0
+  Store         1115        1115              10             13            2343              0                        0                       0
+
+
+7. FINAL DATA QUALITY VALIDATION
+
+                         Count
+Train missing cells          0
+Test missing cells           0
+Store missing cells          0
+Train exact duplicates       0
+Test exact duplicates        0
+Store exact duplicates       0
+Invalid train dates          0
+Invalid test dates           0
+Test Open missing            0
+Negative Sales               0
+Negative Customers           0
+Invalid train DayOfWeek      0
+Invalid test DayOfWeek       0
+
+
+8. CLEANING QUALITY SUMMARY
+
+Dataset    Rows  Columns  Missing Values  Duplicate Rows
+  Train 1017209        9               0               0
+   Test   41088        8               0               0
+  Store    1115       13               0               0
+
+
+9. EXPORTED CLEANED DATASETS
+
+- cleaned_train.csv
+- cleaned_test.csv
+- cleaned_store.csv
+
+
+10. CONCLUSION
+
+The Rossmann datasets were cleaned and validated.
+
+Missing values, duplicates, data types, business
+rules and outliers were analysed.
+
+The cleaned datasets are ready for further
+Exploratory Data Analysis and Sales Prediction.
+
+
+==================================================
+END OF REPORT
+
