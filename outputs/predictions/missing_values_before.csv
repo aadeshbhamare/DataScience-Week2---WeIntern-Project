@@ -1,0 +1,30 @@
+Dataset,Column,Missing Count,Missing Percentage (%)
+Train,Store,0,0.0
+Train,DayOfWeek,0,0.0
+Train,Date,0,0.0
+Train,Sales,0,0.0
+Train,Customers,0,0.0
+Train,Open,0,0.0
+Train,Promo,0,0.0
+Train,StateHoliday,0,0.0
+Train,SchoolHoliday,0,0.0
+Test,Id,0,0.0
+Test,Store,0,0.0
+Test,DayOfWeek,0,0.0
+Test,Date,0,0.0
+Test,Open,11,0.03
+Test,Promo,0,0.0
+Test,StateHoliday,0,0.0
+Test,SchoolHoliday,0,0.0
+Store,Store,0,0.0
+Store,StoreType,0,0.0
+Store,Assortment,0,0.0
+Store,CompetitionDistance,3,0.27
+Store,CompetitionOpenSinceMonth,354,31.75
+Store,CompetitionOpenSinceYear,354,31.75
+Store,Promo2,0,0.0
+Store,Promo2SinceWeek,544,48.79
+Store,Promo2SinceYear,544,48.79
+Store,PromoInterval,544,48.79
+Sample Submission,Id,0,0.0
+Sample Submission,Sales,0,0.0

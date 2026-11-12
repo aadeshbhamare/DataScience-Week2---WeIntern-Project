@@ -1,0 +1,14 @@
+,Count
+Train missing cells,0
+Test missing cells,0
+Store missing cells,0
+Train exact duplicates,0
+Test exact duplicates,0
+Store exact duplicates,0
+Invalid train dates,0
+Invalid test dates,0
+Test Open missing,0
+Negative Sales,0
+Negative Customers,0
+Invalid train DayOfWeek,0
+Invalid test DayOfWeek,0
