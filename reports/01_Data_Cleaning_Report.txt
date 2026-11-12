@@ -1,0 +1,142 @@
+==============================================================================
+                             ROSSMANN STORE SALES
+                             DATA CLEANING REPORT
+              Data quality assessment, treatment and validation
+==============================================================================
+
+  Project     : Rossmann Store Sales
+  Stage       : Data Cleaning
+  Datasets    : Train, Test, Store, Sample Submission
+  Report date : 12 November 2026
+
+------------------------------------------------------------------------------
+
+1. DATASET OVERVIEW
+------------------------------------------------------------------------------
++-------------------+-----------+---------+----------------+---------------+
+| Dataset           |      Rows | Columns | Duplicate Rows | Missing Cells |
++-------------------+-----------+---------+----------------+---------------+
+| Train             | 1,017,209 |       9 |              0 |             0 |
+| Test              |    41,088 |       8 |              0 |            11 |
+| Store             |     1,115 |      10 |              0 |         2,343 |
+| Sample Submission |    41,088 |       2 |              0 |             0 |
++-------------------+-----------+---------+----------------+---------------+
+
+2. MISSING VALUES ANALYSIS
+------------------------------------------------------------------------------
++---------+---------------------------+---------------+-------------+
+| Dataset | Column                    | Missing Count | Missing (%) |
++---------+---------------------------+---------------+-------------+
+| Test    | Open                      |            11 |        0.03 |
+| Store   | CompetitionDistance       |             3 |        0.27 |
+| Store   | CompetitionOpenSinceMonth |           354 |       31.75 |
+| Store   | CompetitionOpenSinceYear  |           354 |       31.75 |
+| Store   | Promo2SinceWeek           |           544 |       48.79 |
+| Store   | Promo2SinceYear           |           544 |       48.79 |
+| Store   | PromoInterval             |           544 |       48.79 |
++---------+---------------------------+---------------+-------------+
+
+3. DUPLICATE ANALYSIS
+------------------------------------------------------------------------------
++---------+----------------------+
+| Dataset | Duplicate Rows Found |
++---------+----------------------+
+| Train   |                    0 |
+| Test    |                    0 |
+| Store   |                    0 |
++---------+----------------------+
+
+4. MISSING VALUE HANDLING
+------------------------------------------------------------------------------
+  - CompetitionDistance: median imputation, with a missingness indicator
+    created.
+  - Promo2 fields: missing values handled as structurally not applicable.
+  - Competition opening information: handled using indicators.
+  - Test Open: missing values inferred using Store and DayOfWeek history.
+
+5. OUTLIER ANALYSIS
+------------------------------------------------------------------------------
++-----------+----------+----------+----------+-------------+-------------+
+| Column    |       Q1 |       Q3 |      IQR | Lower Bound | Upper Bound |
++-----------+----------+----------+----------+-------------+-------------+
+| Sales     | 4,859.00 | 8,360.00 | 3,501.00 |     -392.50 |   13,611.50 |
+| Customers |   519.00 |   893.00 |   374.00 |      -42.00 |    1,454.00 |
++-----------+----------+----------+----------+-------------+-------------+
+
++-----------+---------------+-------------+
+| Column    | Outlier Count | Outlier (%) |
++-----------+---------------+-------------+
+| Sales     |        30,769 |        3.64 |
+| Customers |        40,853 |        4.84 |
++-----------+---------------+-------------+
+
+  - Outliers were detected using the IQR method.
+  - Genuine business outliers were retained.
+  - No automatic deletion or capping was performed.
+
+6. BEFORE AND AFTER COMPARISON
+------------------------------------------------------------------------------
++---------+-------------+------------+-------------+------------+
+| Dataset | Rows Before | Rows After | Cols Before | Cols After |
++---------+-------------+------------+-------------+------------+
+| Train   |   1,017,209 |  1,017,209 |           9 |          9 |
+| Test    |      41,088 |     41,088 |           8 |          8 |
+| Store   |       1,115 |      1,115 |          10 |         13 |
++---------+-------------+------------+-------------+------------+
+
++---------+----------------+---------------+--------------+-------------+
+| Dataset | Missing Before | Missing After | Dupes Before | Dupes After |
++---------+----------------+---------------+--------------+-------------+
+| Train   |              0 |             0 |            0 |           0 |
+| Test    |             11 |             0 |            0 |           0 |
+| Store   |          2,343 |             0 |            0 |           0 |
++---------+----------------+---------------+--------------+-------------+
+
+7. FINAL DATA QUALITY VALIDATION
+------------------------------------------------------------------------------
++-------------------------+-------+--------+
+| Validation Check        | Count | Status |
++-------------------------+-------+--------+
+| Train missing cells     |     0 |  PASS  |
+| Test missing cells      |     0 |  PASS  |
+| Store missing cells     |     0 |  PASS  |
+| Train exact duplicates  |     0 |  PASS  |
+| Test exact duplicates   |     0 |  PASS  |
+| Store exact duplicates  |     0 |  PASS  |
+| Invalid train dates     |     0 |  PASS  |
+| Invalid test dates      |     0 |  PASS  |
+| Test Open missing       |     0 |  PASS  |
+| Negative Sales          |     0 |  PASS  |
+| Negative Customers      |     0 |  PASS  |
+| Invalid train DayOfWeek |     0 |  PASS  |
+| Invalid test DayOfWeek  |     0 |  PASS  |
++-------------------------+-------+--------+
+
+8. CLEANING QUALITY SUMMARY
+------------------------------------------------------------------------------
++---------+-----------+---------+----------------+----------------+
+| Dataset |      Rows | Columns | Missing Values | Duplicate Rows |
++---------+-----------+---------+----------------+----------------+
+| Train   | 1,017,209 |       9 |              0 |              0 |
+| Test    |    41,088 |       8 |              0 |              0 |
+| Store   |     1,115 |      13 |              0 |              0 |
++---------+-----------+---------+----------------+----------------+
+
+9. EXPORTED CLEANED DATASETS
+------------------------------------------------------------------------------
+  - cleaned_train.csv
+  - cleaned_test.csv
+  - cleaned_store.csv
+
+10. CONCLUSION
+------------------------------------------------------------------------------
++----------------------------------------------------------------------------+
+| The Rossmann datasets were cleaned and validated. Missing values,          |
+| duplicates, data types, business rules and outliers were analysed.         |
+| The cleaned datasets are ready for further Exploratory Data Analysis and   |
+| Sales Prediction.                                                          |
++----------------------------------------------------------------------------+
+
+==============================================================================
+                                END OF REPORT
+==============================================================================

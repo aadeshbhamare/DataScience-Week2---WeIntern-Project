@@ -1,0 +1,91 @@
+==============================================================================
+                             ROSSMANN STORE SALES
+                       EXPLORATORY DATA ANALYSIS REPORT
+         Sales patterns, store performance, promotions and customers
+==============================================================================
+
+  Project        : Rossmann Store Sales
+  Stage          : Exploratory Data Analysis
+  Period covered : 2013-01-01 to 2015-07-31
+  Report date    : 12 November 2026
+
+------------------------------------------------------------------------------
+
+1. DATASET OVERVIEW
+------------------------------------------------------------------------------
++---------------+--------------------------+
+| Metric        |                    Value |
++---------------+--------------------------+
+| Total records |                1,017,209 |
+| Total stores  |                    1,115 |
+| Total columns |                       25 |
+| Date range    | 2013-01-01 to 2015-07-31 |
++---------------+--------------------------+
+
+2. SALES SUMMARY
+------------------------------------------------------------------------------
++---------------+------------------+
+| Metric        |            Value |
++---------------+------------------+
+| Total sales   | 5,873,180,623.00 |
+| Average sales |         5,773.82 |
+| Median sales  |         5,744.00 |
+| Maximum sales |        41,551.00 |
++---------------+------------------+
+
+3. CUSTOMER SUMMARY
+------------------------------------------------------------------------------
++-------------------+--------+
+| Metric            |  Value |
++-------------------+--------+
+| Average customers | 633.15 |
+| Maximum customers |  7,388 |
++-------------------+--------+
+
+4. STORE PERFORMANCE
+------------------------------------------------------------------------------
++----------------------------+-----------+
+| Metric                     |     Value |
++----------------------------+-----------+
+| Total stores               |     1,115 |
+| Best performing store type |         b |
+| Highest sales month        | 3 (March) |
++----------------------------+-----------+
+
+5. PROMOTION ANALYSIS
+------------------------------------------------------------------------------
++---------------------------------+----------+
+| Metric                          |    Value |
++---------------------------------+----------+
+| Average sales without promotion | 5,929.41 |
+| Average sales with promotion    | 8,228.28 |
+| Percentage difference           |   38.77% |
++---------------------------------+----------+
+
+6. CORRELATION ANALYSIS
+------------------------------------------------------------------------------
++--------------------+-------------+
+| Variable Pair      | Correlation |
++--------------------+-------------+
+| Customers vs Sales |       0.824 |
++--------------------+-------------+
+
+7. BUSINESS INSIGHTS
+------------------------------------------------------------------------------
+  - Promotion performance was analysed.
+  - Store type performance was compared.
+  - Monthly sales patterns were identified.
+  - Customer and sales relationships were examined.
+
+8. CONCLUSION
+------------------------------------------------------------------------------
++----------------------------------------------------------------------------+
+| The exploratory analysis identified sales patterns, store performance      |
+| differences, promotional trends and time-based variations.                 |
+| These findings can support business decisions related to inventory         |
+| planning, promotions and store performance improvement.                    |
++----------------------------------------------------------------------------+
+
+==============================================================================
+                                END OF REPORT
+==============================================================================

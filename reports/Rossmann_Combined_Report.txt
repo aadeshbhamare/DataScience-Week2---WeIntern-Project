@@ -1,0 +1,423 @@
+==============================================================================
+
+
+                             ROSSMANN STORE SALES
+
+                          COMBINED ANALYTICS REPORT
+
+         Data Cleaning | Exploratory Data Analysis | Sales Prediction
+
+==============================================================================
+
+  Project     : Rossmann Store Sales
+  Report date : 12 November 2026
+  Data period : 2013-01-01 to 2015-07-31
+
+CONTENTS
+------------------------------------------------------------------------------
+  Part 1  Data Cleaning Report
+  Part 2  Exploratory Data Analysis Report
+  Part 3  Sales Prediction Report
+
+
+==============================================================================
+                             ROSSMANN STORE SALES
+                             DATA CLEANING REPORT
+              Data quality assessment, treatment and validation
+==============================================================================
+
+  Project     : Rossmann Store Sales
+  Stage       : Data Cleaning
+  Datasets    : Train, Test, Store, Sample Submission
+  Report date : 12 November 2026
+
+------------------------------------------------------------------------------
+
+1. DATASET OVERVIEW
+------------------------------------------------------------------------------
++-------------------+-----------+---------+----------------+---------------+
+| Dataset           |      Rows | Columns | Duplicate Rows | Missing Cells |
++-------------------+-----------+---------+----------------+---------------+
+| Train             | 1,017,209 |       9 |              0 |             0 |
+| Test              |    41,088 |       8 |              0 |            11 |
+| Store             |     1,115 |      10 |              0 |         2,343 |
+| Sample Submission |    41,088 |       2 |              0 |             0 |
++-------------------+-----------+---------+----------------+---------------+
+
+2. MISSING VALUES ANALYSIS
+------------------------------------------------------------------------------
++---------+---------------------------+---------------+-------------+
+| Dataset | Column                    | Missing Count | Missing (%) |
++---------+---------------------------+---------------+-------------+
+| Test    | Open                      |            11 |        0.03 |
+| Store   | CompetitionDistance       |             3 |        0.27 |
+| Store   | CompetitionOpenSinceMonth |           354 |       31.75 |
+| Store   | CompetitionOpenSinceYear  |           354 |       31.75 |
+| Store   | Promo2SinceWeek           |           544 |       48.79 |
+| Store   | Promo2SinceYear           |           544 |       48.79 |
+| Store   | PromoInterval             |           544 |       48.79 |
++---------+---------------------------+---------------+-------------+
+
+3. DUPLICATE ANALYSIS
+------------------------------------------------------------------------------
++---------+----------------------+
+| Dataset | Duplicate Rows Found |
++---------+----------------------+
+| Train   |                    0 |
+| Test    |                    0 |
+| Store   |                    0 |
++---------+----------------------+
+
+4. MISSING VALUE HANDLING
+------------------------------------------------------------------------------
+  - CompetitionDistance: median imputation, with a missingness indicator
+    created.
+  - Promo2 fields: missing values handled as structurally not applicable.
+  - Competition opening information: handled using indicators.
+  - Test Open: missing values inferred using Store and DayOfWeek history.
+
+5. OUTLIER ANALYSIS
+------------------------------------------------------------------------------
++-----------+----------+----------+----------+-------------+-------------+
+| Column    |       Q1 |       Q3 |      IQR | Lower Bound | Upper Bound |
++-----------+----------+----------+----------+-------------+-------------+
+| Sales     | 4,859.00 | 8,360.00 | 3,501.00 |     -392.50 |   13,611.50 |
+| Customers |   519.00 |   893.00 |   374.00 |      -42.00 |    1,454.00 |
++-----------+----------+----------+----------+-------------+-------------+
+
++-----------+---------------+-------------+
+| Column    | Outlier Count | Outlier (%) |
++-----------+---------------+-------------+
+| Sales     |        30,769 |        3.64 |
+| Customers |        40,853 |        4.84 |
++-----------+---------------+-------------+
+
+  - Outliers were detected using the IQR method.
+  - Genuine business outliers were retained.
+  - No automatic deletion or capping was performed.
+
+6. BEFORE AND AFTER COMPARISON
+------------------------------------------------------------------------------
++---------+-------------+------------+-------------+------------+
+| Dataset | Rows Before | Rows After | Cols Before | Cols After |
++---------+-------------+------------+-------------+------------+
+| Train   |   1,017,209 |  1,017,209 |           9 |          9 |
+| Test    |      41,088 |     41,088 |           8 |          8 |
+| Store   |       1,115 |      1,115 |          10 |         13 |
++---------+-------------+------------+-------------+------------+
+
++---------+----------------+---------------+--------------+-------------+
+| Dataset | Missing Before | Missing After | Dupes Before | Dupes After |
++---------+----------------+---------------+--------------+-------------+
+| Train   |              0 |             0 |            0 |           0 |
+| Test    |             11 |             0 |            0 |           0 |
+| Store   |          2,343 |             0 |            0 |           0 |
++---------+----------------+---------------+--------------+-------------+
+
+7. FINAL DATA QUALITY VALIDATION
+------------------------------------------------------------------------------
++-------------------------+-------+--------+
+| Validation Check        | Count | Status |
++-------------------------+-------+--------+
+| Train missing cells     |     0 |  PASS  |
+| Test missing cells      |     0 |  PASS  |
+| Store missing cells     |     0 |  PASS  |
+| Train exact duplicates  |     0 |  PASS  |
+| Test exact duplicates   |     0 |  PASS  |
+| Store exact duplicates  |     0 |  PASS  |
+| Invalid train dates     |     0 |  PASS  |
+| Invalid test dates      |     0 |  PASS  |
+| Test Open missing       |     0 |  PASS  |
+| Negative Sales          |     0 |  PASS  |
+| Negative Customers      |     0 |  PASS  |
+| Invalid train DayOfWeek |     0 |  PASS  |
+| Invalid test DayOfWeek  |     0 |  PASS  |
++-------------------------+-------+--------+
+
+8. CLEANING QUALITY SUMMARY
+------------------------------------------------------------------------------
++---------+-----------+---------+----------------+----------------+
+| Dataset |      Rows | Columns | Missing Values | Duplicate Rows |
++---------+-----------+---------+----------------+----------------+
+| Train   | 1,017,209 |       9 |              0 |              0 |
+| Test    |    41,088 |       8 |              0 |              0 |
+| Store   |     1,115 |      13 |              0 |              0 |
++---------+-----------+---------+----------------+----------------+
+
+9. EXPORTED CLEANED DATASETS
+------------------------------------------------------------------------------
+  - cleaned_train.csv
+  - cleaned_test.csv
+  - cleaned_store.csv
+
+10. CONCLUSION
+------------------------------------------------------------------------------
++----------------------------------------------------------------------------+
+| The Rossmann datasets were cleaned and validated. Missing values,          |
+| duplicates, data types, business rules and outliers were analysed.         |
+| The cleaned datasets are ready for further Exploratory Data Analysis and   |
+| Sales Prediction.                                                          |
++----------------------------------------------------------------------------+
+
+==============================================================================
+                                END OF REPORT
+==============================================================================
+
+==============================================================================
+                             ROSSMANN STORE SALES
+                       EXPLORATORY DATA ANALYSIS REPORT
+         Sales patterns, store performance, promotions and customers
+==============================================================================
+
+  Project        : Rossmann Store Sales
+  Stage          : Exploratory Data Analysis
+  Period covered : 2013-01-01 to 2015-07-31
+  Report date    : 12 November 2026
+
+------------------------------------------------------------------------------
+
+1. DATASET OVERVIEW
+------------------------------------------------------------------------------
++---------------+--------------------------+
+| Metric        |                    Value |
++---------------+--------------------------+
+| Total records |                1,017,209 |
+| Total stores  |                    1,115 |
+| Total columns |                       25 |
+| Date range    | 2013-01-01 to 2015-07-31 |
++---------------+--------------------------+
+
+2. SALES SUMMARY
+------------------------------------------------------------------------------
++---------------+------------------+
+| Metric        |            Value |
++---------------+------------------+
+| Total sales   | 5,873,180,623.00 |
+| Average sales |         5,773.82 |
+| Median sales  |         5,744.00 |
+| Maximum sales |        41,551.00 |
++---------------+------------------+
+
+3. CUSTOMER SUMMARY
+------------------------------------------------------------------------------
++-------------------+--------+
+| Metric            |  Value |
++-------------------+--------+
+| Average customers | 633.15 |
+| Maximum customers |  7,388 |
++-------------------+--------+
+
+4. STORE PERFORMANCE
+------------------------------------------------------------------------------
++----------------------------+-----------+
+| Metric                     |     Value |
++----------------------------+-----------+
+| Total stores               |     1,115 |
+| Best performing store type |         b |
+| Highest sales month        | 3 (March) |
++----------------------------+-----------+
+
+5. PROMOTION ANALYSIS
+------------------------------------------------------------------------------
++---------------------------------+----------+
+| Metric                          |    Value |
++---------------------------------+----------+
+| Average sales without promotion | 5,929.41 |
+| Average sales with promotion    | 8,228.28 |
+| Percentage difference           |   38.77% |
++---------------------------------+----------+
+
+6. CORRELATION ANALYSIS
+------------------------------------------------------------------------------
++--------------------+-------------+
+| Variable Pair      | Correlation |
++--------------------+-------------+
+| Customers vs Sales |       0.824 |
++--------------------+-------------+
+
+7. BUSINESS INSIGHTS
+------------------------------------------------------------------------------
+  - Promotion performance was analysed.
+  - Store type performance was compared.
+  - Monthly sales patterns were identified.
+  - Customer and sales relationships were examined.
+
+8. CONCLUSION
+------------------------------------------------------------------------------
++----------------------------------------------------------------------------+
+| The exploratory analysis identified sales patterns, store performance      |
+| differences, promotional trends and time-based variations.                 |
+| These findings can support business decisions related to inventory         |
+| planning, promotions and store performance improvement.                    |
++----------------------------------------------------------------------------+
+
+==============================================================================
+                                END OF REPORT
+==============================================================================
+
+==============================================================================
+                             ROSSMANN STORE SALES
+                           SALES PREDICTION REPORT
+          Machine learning models for daily store sales forecasting
+==============================================================================
+
+  Project        : Rossmann Store Sales Prediction
+  Task           : Task 3 - Sales Prediction
+  Selected model : Tuned Random Forest Regressor
+  Report date    : 12 November 2026
+
+------------------------------------------------------------------------------
+
+1. PROJECT OVERVIEW
+------------------------------------------------------------------------------
+Objective: To predict daily store sales using Machine Learning models based on
+historical sales and store information.
+
+2. DATASET INFORMATION
+------------------------------------------------------------------------------
++---------------------+--------------------------+
+| Item                |                    Value |
++---------------------+--------------------------+
+| Training records    |                1,017,209 |
+| Testing records     |                   41,088 |
+| Store records       |                    1,115 |
+| Training features   |                       27 |
+| Training date range | 2013-01-01 to 2015-07-31 |
++---------------------+--------------------------+
+
+3. DATA PREPROCESSING
+------------------------------------------------------------------------------
+  - Cleaned datasets were used.
+  - Training and testing datasets were merged with store data.
+  - Missing values were checked.
+  - Categorical variables were encoded.
+  - Numerical features were retained.
+
+4. FEATURE ENGINEERING
+------------------------------------------------------------------------------
+  - Year
+  - Month
+  - Day
+  - Day of Year
+  - Week of Year
+  - Weekend Indicator
+  - Month Start and Month End
+  - Competition Age
+  - Promotion Activity
+
+5. MODEL DEVELOPMENT
+------------------------------------------------------------------------------
+The following Machine Learning models were developed:
+  - Linear Regression
+  - Random Forest Regressor
+  - Tuned Random Forest Regressor
+
+6. MODEL EVALUATION
+------------------------------------------------------------------------------
+Evaluation metrics: Root Mean Squared Error (RMSE), Mean Absolute Error (MAE)
+and R2 Score.
+
++---------------------+----------+----------+------+
+| Model               |     RMSE |      MAE |   R2 |
++---------------------+----------+----------+------+
+| Tuned Random Forest | 1,177.08 |   794.05 | 0.85 |
+| Random Forest       | 1,363.03 |   928.15 | 0.80 |
+| Linear Regression   | 2,664.04 | 1,946.24 | 0.24 |
++---------------------+----------+----------+------+
+
+7. BEST MODEL
+------------------------------------------------------------------------------
++---------------------+----------+--------+----------+
+| Selected Model      |     RMSE |    MAE | R2 Score |
++---------------------+----------+--------+----------+
+| Tuned Random Forest | 1,177.08 | 794.05 |   0.8516 |
++---------------------+----------+--------+----------+
+
+8. HYPERPARAMETER TUNING
+------------------------------------------------------------------------------
+RandomizedSearchCV was used for Random Forest hyperparameter optimisation.
+
++-------------------+-------+
+| Best Parameter    | Value |
++-------------------+-------+
+| n_estimators      |    80 |
+| min_samples_split |     5 |
+| min_samples_leaf  |     2 |
+| max_features      |   0.8 |
+| max_depth         |    25 |
++-------------------+-------+
+
+  Best cross-validation RMSE: 2,175.26
+
+9. FEATURE IMPORTANCE
+------------------------------------------------------------------------------
+Top 15 features ranked by importance:
+
++------+------------------------------+-------------+------------+-----------+
+| Rank | Feature                      | Type        | Importance | Chart     |
++------+------------------------------+-------------+------------+-----------+
+|    1 | Competition Distance         | Numerical   |       0.18 | ######### |
+|    2 | Store                        | Numerical   |       0.15 | ########  |
+|    3 | Promo                        | Numerical   |       0.14 | #######   |
+|    4 | Competition Open Since Year  | Numerical   |       0.06 | ###       |
+|    5 | Competition Open Since Month | Numerical   |       0.06 | ###       |
+|    6 | Day of Week                  | Numerical   |       0.06 | ###       |
+|    7 | Competition Age (months)     | Numerical   |       0.05 | ###       |
+|    8 | Day of Year                  | Numerical   |       0.04 | ##        |
+|    9 | Promo2 Since Year            | Numerical   |       0.03 | ##        |
+|   10 | Day                          | Numerical   |       0.03 | ##        |
+|   11 | Promo2 Since Week            | Numerical   |       0.03 | ##        |
+|   12 | StoreType B                  | Categorical |       0.03 | ##        |
+|   13 | Week of Year                 | Numerical   |       0.02 | #         |
+|   14 | Assortment C                 | Categorical |       0.01 | #         |
+|   15 | StoreType A                  | Categorical |       0.01 | #         |
++------+------------------------------+-------------+------------+-----------+
+
+10. VALIDATION PREDICTIONS
+------------------------------------------------------------------------------
+Total validation predictions: 175,084. Actual and predicted sales were
+compared to evaluate model performance.
+
+11. FINAL TEST PREDICTIONS
+------------------------------------------------------------------------------
+Total test predictions: 41,088. Final sales predictions were generated for the
+test dataset.
+
+12. OUTPUT FILES
+------------------------------------------------------------------------------
+  Models:
+    - linear_regression_model.pkl
+    - random_forest_model.pkl
+    - tuned_random_forest_model.pkl
+    - best_sales_prediction_model.pkl
+
+  Predictions:
+    - model_comparison.csv
+    - validation_predictions.csv
+    - final_sales_predictions.csv
+    - feature_importance.csv
+
+  Visualisations:
+    - 01_model_comparison.png
+    - 02_actual_vs_predicted.png
+    - 03_residual_distribution.png
+    - 04_feature_importance.png
+
+  Reports:
+    - Sales_Prediction_Report.txt
+    - Sales_Prediction_Report.pdf
+
+13. CONCLUSION
+------------------------------------------------------------------------------
++----------------------------------------------------------------------------+
+| Three Machine Learning models were developed and evaluated for Rossmann    |
+| store sales prediction.                                                    |
+| The best-performing model was selected based on validation performance.    |
+| Feature importance analysis was performed to identify important sales      |
+| prediction factors, and final predictions were generated for the test      |
+| dataset.                                                                   |
++----------------------------------------------------------------------------+
+
+==============================================================================
+                                END OF REPORT
+==============================================================================
