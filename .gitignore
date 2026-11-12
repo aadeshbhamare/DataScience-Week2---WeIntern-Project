@@ -1,0 +1,12 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments & Editor
+.vscode/
+.idea/
+.history/
+
+# Local alias models directory (actual models are in outputs/models/)
+models/
