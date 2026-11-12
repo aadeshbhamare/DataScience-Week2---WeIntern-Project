@@ -405,5 +405,3 @@ The project provides practical experience in handling real-world retail data, pe
 **Aadesh Bhamare**
 
 **Project:** WeIntern – Week 2 Data Science Internship
-
-**Domain:** Data Science and Machine Learning
