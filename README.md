@@ -1,6 +1,4 @@
 # DataScience-Week2---WeIntern-Project
-
-# WeIntern – Week 2 Data Science Project
 ## Rossmann Store Sales: Data Cleaning, Exploratory Data Analysis & Sales Prediction
 
 ## 1. Project Overview
