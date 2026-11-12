@@ -1,0 +1,78 @@
+
+ROSSMANN STORE SALES
+EXPLORATORY DATA ANALYSIS REPORT
+==========================================
+
+1. DATASET OVERVIEW
+
+Total Records: 1,017,209
+Total Stores: 1115
+Total Columns: 25
+
+Date Range:
+2013-01-01 00:00:00 to 2015-07-31 00:00:00
+
+
+2. SALES SUMMARY
+
+Total Sales: 5,873,180,623.00
+Average Sales: 5,773.82
+Median Sales: 5,744.00
+Maximum Sales: 41,551.00
+
+
+3. CUSTOMER SUMMARY
+
+Average Customers: 633.15
+Maximum Customers: 7,388
+
+
+4. STORE PERFORMANCE
+
+Total Stores: 1115
+
+Best Performing Store Type:
+b
+
+Highest Sales Month:
+3
+
+
+5. PROMOTION ANALYSIS
+
+Average Sales Without Promotion:
+5,929.41
+
+Average Sales With Promotion:
+8,228.28
+
+Percentage Difference:
+38.77%
+
+
+6. CORRELATION ANALYSIS
+
+Customer-Sales Correlation:
+0.824
+
+
+7. BUSINESS INSIGHTS
+
+- Promotion performance was analysed.
+- Store type performance was compared.
+- Monthly sales patterns were identified.
+- Customer and sales relationships were examined.
+
+
+8. CONCLUSION
+
+The exploratory analysis identified sales patterns,
+store performance differences, promotional trends,
+and time-based variations.
+
+These findings can support business decisions
+related to inventory planning, promotions,
+and store performance improvement.
+
+==========================================
+END OF REPORT
